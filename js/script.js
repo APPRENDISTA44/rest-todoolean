@@ -10,11 +10,25 @@ $(document).ready(function () {
     var testo = $('#text').val();
     if (testo.trim() != '') {
       aggiungiElemento(url,testo);
-      stampaLista(url);
+
       testo = '';
     }
-
 });
+$(document).on('click','.elimina',
+function () {
+  var thisId = $(this).parent().attr('data-id');
+  $.ajax({
+    method: "DELETE",
+    url: url + thisId,
+    success : function (data) {
+      stampaLista(url);
+    },
+    error : function() {
+        errore("Si è verificato un errore");
+    }
+  });
+});
+
 
 //FUNZIONI
 function stampaLista(url) {
@@ -23,7 +37,6 @@ function stampaLista(url) {
     method: "GET",
     url: url,
     success : function (data) {
-
       if (data.length > 0) {
         var source = $('#item_template').html();
         var template = Handlebars.compile(source);
@@ -35,18 +48,12 @@ function stampaLista(url) {
           $('#todo_list').append(html);
         }
       }
-
-
     },
     error : function() {
         errore("Si è verificato un errore");
     }
   });
 }
-
-
-
-
 
 
 function aggiungiElemento(url,text) {
@@ -57,14 +64,12 @@ function aggiungiElemento(url,text) {
       "text" : text
     },
     success: function (data) {
-
+      stampaLista(url);
     },
     error : function() {
         errore("Si è verificato un errore");
     }
   });
 }
-
-
 
 });
