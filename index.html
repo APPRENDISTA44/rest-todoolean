@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <script src="https://momentjs.com/downloads/moment.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
+    <title>todoolean</title>
+  </head>
+  <body>
+    <h1>Cose da fare</h1>
+    <input id="text" type="text" placeholder="Inserisci testo">
+    <button id="add">Aggiungi</button>
+    <ul id="todo_list">
+
+    </ul>
+
+
+
+    <script id="item_template" type="text/x-handlebars-template">
+      <li data-id="{{id}}"> {{text}} <button>Elimina</button> </li>
+    </script>
+    <!-- codice js -->
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
